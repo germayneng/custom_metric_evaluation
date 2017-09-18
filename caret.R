@@ -10,7 +10,7 @@ library(Metric)
 # some mae example 
 ###################
 
-custom_summary = function(data, lev = NULL, model = NULL){
+mae_summary = function(data, lev = NULL, model = NULL){
   #out = accuracy(data[, "obs"], data[, "pred"])[5]
   #out = accuracy(data$obs, data$pred)[5]
   #out = mae(data[, "obs"], data[, "pred"])
@@ -18,6 +18,26 @@ custom_summary = function(data, lev = NULL, model = NULL){
   names(out) = c("mae")
   out
 }
+
+
+
+###################
+# some R^2 example 
+###################
+# used in mercedes kaggle 
+
+
+
+rs_summary = function(data, lev = NULL, model = NULL){
+    out = 1 - (sum((data[, "obs"]- data[, "pred"] )^2)/sum((data[, "obs"]-mean(data[, "obs"]))^2))
+    names(out) = c("rsquare")
+    out
+}
+
+
+
+
+
 
 
 
